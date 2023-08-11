@@ -9,13 +9,13 @@ def lambda_handler(event, context):
         print(body)
 
         message_part=body['message'].get('text')
-        print("Message part : {}".formate(message_part))
+        print("Message part : {}".format(message_part))
 
         data = {'url':message_part}
 
         payload=requests.post('https://cleanuri.com/api/v1/shorten',data=data) 
         short_url = payload.json()['result_url']
-        print("the short url is : {}".formate(short_url))
+        print("the short url is : {}".format(short_url))
 
         chat_id=body['message']['chat']['id']
         url = f'https://api.telegram.org/bot{token_no}/sendMessage'
